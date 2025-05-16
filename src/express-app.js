@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const {HandleError} = require('./utils/error-handler')
 
 module.exports = async(app) => {
 
@@ -15,6 +16,9 @@ module.exports = async(app) => {
 
     //Serves static files from the public directory ,accessing ex - http://localhost:8000/logo.png will return that image.
     app.use(express.static(__dirname + '/public'))
+
+    app.use(HandleError)
+
 
 
 }
